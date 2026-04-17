@@ -1,0 +1,23 @@
+name: Extract ZIP
+
+on: [push]
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Extract ZIP file
+        run: |
+          mkdir -p extracted_files
+          unzip testingsite.zip -d extracted_files
+
+      - name: Commit extracted files
+        run: |
+          git config --local user.email 'github-actions@github.com'
+          git config --local user.name 'GitHub Action'
+          git add extracted_files/
+          git commit -m 'Extract testingsite.zip' || echo 'No changes to commit'
+          git push

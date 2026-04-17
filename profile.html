@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - The Fallen DayZ</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        .profile-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background: var(--backcolor);
+            padding-bottom: 50px;
+        }
+
+        .profile-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1a1a2e 0%, var(--backcolor) 100%);
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--btncolor);
+            box-shadow: 0 0 30px rgba(155, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .profile-name {
+            font-family: var(--h2font);
+            font-size: 2.5em;
+            color: var(--fontcolor);
+            margin-bottom: 5px;
+        }
+
+        .profile-tag {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .profile-joined {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9em;
+        }
+
+        .profile-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-section {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(155, 0, 0, 0.3);
+        }
+
+        .profile-section h2 {
+            font-family: var(--h2font);
+            color: var(--fontcolor);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .roles-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .role-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .no-roles {
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+        }
+
+        .spin-history {
+            display: grid;
+            gap: 15px;
+        }
+
+        .spin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            border-left: 4px solid var(--btncolor);
+        }
+
+        .spin-item.winner {
+            border-left-color: #00ff00;
+        }
+
+        .spin-item.lost {
+            border-left-color: #ff4444;
+        }
+
+        .spin-prize {
+            font-weight: bold;
+            color: #00ff00;
+        }
+
+        .spin-prize.none {
+            color: #ff4444;
+        }
+
+        .spin-time {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85em;
+        }
+
+        .no-spins {
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .login-prompt {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .login-prompt a {
+            color: #5865F2;
+            font-size: 1.2em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--btncolor);
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 1.8em;
+            }
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <lord-icon src="media/icon/fire.json" trigger="loop" style="width: 100px;height: 100px;"></lord-icon>The <span>Fallen</span> DayZ
+        </a>
+        <div class="menuToggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="index.html#servers" onclick="toggleMenu()">Servers</a></li>
+            <li><a href="index.html#staffteam" onclick="toggleMenu()">Staff Team</a></li>
+            <li><a href="tools.html" onclick="toggleMenu()">DayZ Tools</a></li>
+            <li><a href="index.html#spinnwin" onclick="toggleMenu()">Spin n Win</a></li>
+            <li id="auth-link"><a href="/auth/discord" class="login-btn">Login with Discord</a></li>
+            <li id="user-display" style="display: none;">
+                <div class="user-info">
+                    <img id="user-avatar" src="" alt="Avatar">
+                    <span id="username"></span>
+                    <div class="user-dropdown">
+                        <a href="profile.html" style="display: block; padding: 5px 10px; color: #fff;">My Profile</a>
+                        <div id="user-roles"></div>
+                        <a href="/auth/logout" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="profile-page" id="profile-content">
+        <!-- Content loaded via JavaScript -->
+    </div>
+
+    <p class="copyright">&copy; 2026 | The Fallen DayZ | By: <a href="">Newks</a> | & The Fallen DayZ Community</p>
+
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 300, duration: 2000 });
+
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle("sticky", window.scrollY > 0);
+        });
+
+        function toggleMenu() {
+            document.querySelector('.menuToggle').classList.toggle('active');
+            document.querySelector('.navigation').classList.toggle('active');
+        }
+
+        async function loadProfile() {
+            try {
+                const userRes = await fetch('/api/user');
+                const userData = await userRes.json();
+                
+                if (!userData.loggedIn) {
+                    document.getElementById('profile-content').innerHTML = `
+                        <div class="login-prompt">
+                            <h2 style="color: var(--fontcolor);">Please login to view your profile</h2>
+                            <a href="/auth/discord">Login with Discord</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const user = userData.user;
+                const avatarUrl = user.avatar 
+                    ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=256` 
+                    : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+                
+                // Get roles
+                const rolesRes = await fetch('/api/user/roles');
+                const rolesData = await rolesRes.json();
+                
+                // Get spin history from localStorage
+                const spinHistory = JSON.parse(localStorage.getItem('spinWinners') || '[]');
+                const totalSpins = spinHistory.length;
+                const totalWins = spinHistory.filter(s => s.prize !== 'Nothing').length;
+                
+                // Build profile HTML
+                let rolesHtml = '<div class="roles-list">';
+                if (rolesData.roles && rolesData.roles.length > 0) {
+                    rolesData.roles.forEach(role => {
+                        const color = role.color ? '#' + role.color.toString(16).padStart(6, '0') : '#666';
+                        rolesHtml += `<span class="role-badge" style="background: ${color}">${role.name}</span>`;
+                    });
+                } else {
+                    rolesHtml += '<span class="no-roles">No roles in server</span>';
+                }
+                rolesHtml += '</div>';
+                
+                let spinHtml = '<div class="spin-history">';
+                if (spinHistory.length > 0) {
+                    spinHistory.slice(0, 10).forEach(spin => {
+                        const isWin = spin.prize !== 'Nothing';
+                        spinHtml += `
+                            <div class="spin-item ${isWin ? 'winner' : 'lost'}">
+                                <span class="spin-prize ${isWin ? '' : 'none'}">${spin.prize}</span>
+                                <span class="spin-time">${new Date(spin.time).toLocaleDateString()}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    spinHtml += '<div class="no-spins">No spins yet - try your luck at Spin n Win!</div>';
+                }
+                spinHtml += '</div>';
+                
+                document.getElementById('profile-content').innerHTML = `
+                    <div class="profile-header" data-aos="fade-down">
+                        <img src="${avatarUrl}" alt="${user.username}" class="profile-avatar">
+                        <h1 class="profile-name">${user.username}</h1>
+                        <p class="profile-tag">#${user.discriminator}</p>
+                        <p class="profile-joined">Member since: ${new Date().toLocaleDateString()}</p>
+                    </div>
+                    
+                    <div class="profile-content">
+                        <div class="profile-section" data-aos="fade-up">
+                            <h2>📊 Statistics</h2>
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <div class="stat-number">${totalSpins}</div>
+                                    <div class="stat-label">Total Spins</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number">${totalWins}</div>
+                                    <div class="stat-label">Wins</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-number">${rolesData.roles ? rolesData.roles.length : 0}</div>
+                                    <div class="stat-label">Server Roles</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section" data-aos="fade-up">
+                            <h2>🎭 Discord Roles</h2>
+                            ${rolesHtml}
+                        </div>
+                        
+                        <div class="profile-section" data-aos="fade-up">
+                            <h2>🎰 Spin History</h2>
+                            ${spinHtml}
+                        </div>
+                    </div>
+                `;
+                
+                // Update nav
+                document.getElementById('auth-link').style.display = 'none';
+                document.getElementById('user-display').style.display = 'block';
+                document.getElementById('user-avatar').src = avatarUrl;
+                document.getElementById('username').textContent = user.username;
+                
+            } catch (error) {
+                console.error('Profile load error:', error);
+                document.getElementById('profile-content').innerHTML = `
+                    <div class="login-prompt">
+                        <h2 style="color: var(--fontcolor);">Error loading profile</h2>
+                        <a href="/auth/discord">Try logging in again</a>
+                    </div>
+                `;
+            }
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>

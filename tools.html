@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DayZ Tools - The Fallen DayZ</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        .tools-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background: var(--backcolor);
+        }
+
+        .tools-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .tools-header h1 {
+            font-family: var(--h2font);
+            font-size: 3em;
+            color: var(--fontcolor);
+            margin-bottom: 10px;
+        }
+
+        .tools-header h1 span {
+            color: var(--btncolor);
+        }
+
+        .tools-header p {
+            font-family: var(--pfont);
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1em;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px 50px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(155, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(155, 0, 0, 0.3);
+            border-color: var(--btncolor);
+        }
+
+        .tool-card .icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: rgba(155, 0, 0, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool-card h3 {
+            font-family: var(--h2font);
+            color: var(--fontcolor);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            font-family: var(--pfont);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .tool-card .tool-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--btncolor);
+            color: var(--fontcolor);
+            text-decoration: none;
+            border-radius: 25px;
+            font-family: var(--navfont);
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .tool-card .tool-btn:hover {
+            background: #7a0000;
+        }
+
+        .coming-soon {
+            opacity: 0.5;
+        }
+
+        .coming-soon .tool-btn {
+            background: #444;
+            cursor: not-allowed;
+        }
+
+        /* Navigation for tools page */
+        nav .navigation li a[href="tools.html"] {
+            color: var(--btncolor);
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                padding: 20px 20px 100px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .tools-header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <lord-icon
+                src="media/icon/fire.json"
+                trigger="loop"
+                style="width: 100px;height: 100px;">
+            </lord-icon>The <span>Fallen</span> DayZ
+        </a>
+        <div class="menuToggle" onclick="toggleMenu()">
+        </div>
+        <ul class="navigation">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="index.html#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="index.html#servers" onclick="toggleMenu()">Servers</a></li>
+            <li><a href="index.html#staffteam" onclick="toggleMenu()">Staff Team</a></li>
+            <li><a href="tools.html" onclick="toggleMenu()">DayZ Tools</a></li>
+            <li><a href="index.html#spinnwin" onclick="toggleMenu()">Spin n Win</a></li>
+            <li id="auth-link"><a href="/auth/discord" class="login-btn">Login with Discord</a></li>
+            <li id="user-display" style="display: none;">
+                <div class="user-info">
+                    <img id="user-avatar" src="" alt="Avatar">
+                    <span id="username"></span>
+                    <div class="user-dropdown">
+                        <div id="user-roles"></div>
+                        <a href="/auth/logout" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="tools-page">
+        <div class="tools-header" data-aos="fade-down">
+            <h1><span>DayZ</span> Tools</h1>
+            <p>Useful tools for your DayZ gameplay</p>
+        </div>
+
+        <div class="tools-grid">
+            <!-- Loot Finder -->
+            <div class="tool-card" data-aos="flip-left">
+                <div class="icon">
+                    <lord-icon src="media/icon/globe.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Loot Finder</h3>
+                <p>Find spawn locations for weapons, items, and vehicles across the DayZ map.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Map Viewer -->
+            <div class="tool-card" data-aos="flip-right">
+                <div class="icon">
+                    <lord-icon src="media/icon/servers.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Interactive Map</h3>
+                <p>Explore the full Chernarus map with markers for loot, POIs, and player locations.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Damage Calculator -->
+            <div class="tool-card" data-aos="flip-left">
+                <div class="icon">
+                    <lord-icon src="media/icon/fire.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Damage Calculator</h3>
+                <p>Calculate weapon damage, DPS, and effective range for all firearms in DayZ.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Spawn Timer -->
+            <div class="tool-card" data-aos="flip-right">
+                <div class="icon">
+                    <lord-icon src="media/icon/tools.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Spawn Timer</h3>
+                <p>Track world spawn timers for vehicles, crates, and airdrops.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Loadout Builder -->
+            <div class="tool-card" data-aos="flip-left">
+                <div class="icon">
+                    <lord-icon src="media/icon/staff.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Loadout Builder</h3>
+                <p>Create and save your loadouts with weapon attachments and gear combinations.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Server Status -->
+            <div class="tool-card" data-aos="flip-right">
+                <div class="icon">
+                    <lord-icon src="media/icon/discord.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Server Status</h3>
+                <p>Check the current status, player count, and queue times for our servers.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Trader Prices -->
+            <div class="tool-card" data-aos="flip-left">
+                <div class="icon">
+                    <lord-icon src="media/icon/globe.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Trader Prices</h3>
+                <p>Browse all trade items and their current market values on our servers.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+
+            <!-- Ban Appeal -->
+            <div class="tool-card" data-aos="flip-right">
+                <div class="icon">
+                    <lord-icon src="media/icon/fire.json" trigger="loop" style="width:40px;height:40px;"></lord-icon>
+                </div>
+                <h3>Ban Appeal</h3>
+                <p>Submit a ban appeal if you believe your ban was issued in error.</p>
+                <a href="#" class="tool-btn">Coming Soon</a>
+            </div>
+        </div>
+    </div>
+
+    <p class="copyright">&copy; 2026 | The Fallen DayZ | By: <a href="">Newks</a> | & The Fallen DayZ Community</p>
+
+    <!-- Scripts -->
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 2000,
+        });
+    </script>
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('nav');
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+        function toggleMenu(){
+            const menuToggle = document.querySelector('.menuToggle');
+            const navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+        }
+    </script>
+    <script>
+        // Check user login status
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/user');
+                const data = await response.json();
+                
+                if (data.loggedIn) {
+                    const user = data.user;
+                    const avatarUrl = user.avatar 
+                        ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` 
+                        : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+                    
+                    document.getElementById('auth-link').style.display = 'none';
+                    document.getElementById('user-display').style.display = 'block';
+                    document.getElementById('user-avatar').src = avatarUrl;
+                    document.getElementById('username').textContent = user.username;
+                    
+                    fetchRoles();
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+        
+        async function fetchRoles() {
+            try {
+                const response = await fetch('/api/user/roles');
+                const data = await response.json();
+                
+                if (data.roles && data.roles.length > 0) {
+                    document.getElementById('user-roles').innerHTML = 
+                        `<p>Roles: ${data.roles.length} role(s)</p>`;
+                } else {
+                    document.getElementById('user-roles').innerHTML = 
+                        `<p>No roles found in server</p>`;
+                }
+            } catch (error) {
+                console.error('Failed to fetch roles:', error);
+            }
+        }
+        
+        checkAuth();
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">

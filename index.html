@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fallen DayZ</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <lord-icon
+                src="media/icon/fire.json"
+                trigger="loop"
+                style="width: 100px;height: 100px;">
+            </lord-icon>The <span>Fallen</span> DayZ
+        </a>
+        <div class="menuToggle" onclick="toggleMenu()">
+        </div>
+        <ul class="navigation">
+            <li><a href="#banner" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#servers" onclick="toggleMenu()">Servers</a></li>
+            <li><a href="#staffteam" onclick="toggleMenu()">Staff Team</a></li>
+            <li><a href="tools.html" onclick="toggleMenu()">DayZ Tools</a></li>
+            <li><a href="#spinnwin" onclick="toggleMenu()">Spin n Win</a></li>
+            <li id="auth-link"><a href="/auth/discord" class="login-btn">Login with Discord</a></li>
+            <li id="user-display" style="display: none;">
+                <div class="user-info">
+                    <img id="user-avatar" src="" alt="Avatar">
+                    <span id="username"></span>
+                    <div class="user-dropdown">
+                        <a href="profile.html" style="display: block; padding: 5px 10px; color: #fff;">My Profile</a>
+                        <div id="user-roles"></div>
+                        <a href="/auth/logout" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <section class="banner" id="banner">
+        <div class="content">
+            <h2>
+                DayZ Servers | DayZ Tools | Mini Games | & More
+            </h2>
+            
+            <lord-icon
+            
+                src="media/icon/discord.json"
+                trigger="loop"
+                style="width: 75px;height: 75px;">
+            </lord-icon>
+            <h4 class="title-text"><span>The Fallen</span> Discord <a href="https://discord.gg/hQcwum5aDn">Join Now</a></h4>
+            <div id="section10" class="demo">
+                <a href="#about"><span></span></a>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- about  -->
+    <section class="about" id="about">
+        <div class="row" data-aos="zoom-out-down">
+            <div class="col50">
+                <!-- <h2 class="title-text"><box-icon name='user-rectangle' type='solid' color='#00ffff' ></box-icon>About <span>Us</span></h2> -->
+                <h2 class="title-text"><lord-icon
+                    src="media/icon/fire.json"
+                    trigger="loop"
+                    stroke="66"
+                    style="width: 50px;height: 50px;margin-top: -10px;">
+                </lord-icon>About <span>Us</span></h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro quo illum iusto labore consequuntur, repudiandae quasi officia, aut provident similique corrupti eum quibusdam corporis assumenda. Similique, vel reprehenderit numquam voluptas repellat voluptatem et omnis! Odio, ex adipisci maxime maiores sunt deleniti labore consequuntur accusamus voluptate!</br></br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam officia magni consectetur inventore, quisquam soluta maiores culpa illo est distinctio expedita ad aliquid. Enim odit, blanditiis temporibus sunt non impedit?Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat modi ipsam aperiam cumque nesciunt ea tempora! In, totam? Porro exercitationem dolor voluptatem alias accusamus iure consectetur iste vero eaque id?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, corrupti quis sunt magnam dolorum accusantium inventore earum placeat quos, non rem vero ipsam neque dolore sed? Cupiditate incidunt porro laudantium.</br></br>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam dicta facere iste qui velit autem, accusantium cumque pariatur expedita consequuntur optio quis eaque delectus quod similique, magni beatae a earum inventore sit perspiciatis. Mollitia, itaque?</p>
+            </div>
+            <div class="col50">
+                <div class="imgBx">
+                    <img src="media/ab.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ------ -->
+
+
+    <!-- ganes -->
+    <section id="servers" class="game">
+        
+        <div class="title">
+            <lord-icon
+                src="media/icon/servers.json"
+                trigger="loop"
+                style="width: 50px;height: 50px;">
+            </lord-icon>
+            <h2 class="title-text"><span>S</span>ervers</h2>
+            <p>Come play one on of our amazing servers!</p>
+        </div>
+        
+        <div class="content">
+            <div class="box" data-aos="flip-left">
+                <div class="imgBx">
+                    <img src="media/games/faction.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Faction PVP No Safezones</h3>
+                      <h4>NAME: The Fallen #1 Factions</h4>
+                </div>
+            </div>
+            <div class="box" data-aos="flip-right">
+                <div class="imgBx">
+                    <img src="media/games/deathmatch.jpg" alt="">
+                </div>
+                <div class="text"><h3>Deathmatch Chaos</h3>
+                <h4>NAME: The Fallen #2 Deathmatch</h4>
+                </div>
+            </div>
+            
+            <div class="box" data-aos="flip-left">
+                
+                <div class="imgBx" > 
+                    
+                    <img src="media/games/badlands.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Badlands PVP</h3>
+                    <h4>COMING SOON</h4>
+                </div>
+            </div>
+            <div class="box" data-aos="flip-right">
+                <div class="imgBx">
+                    
+                    <img src="media/games/sakhal.jpg" alt="hddhdhS">
+                    
+                </div>
+                <div class="text">
+                    <h3>Sakhal Hardcore</h3>
+                    <h4>COMING SOON</h4>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </section>
+    <!-- ----- -->
+
+    <!-- merchandise  -->
+    <section class="merchandise" id="staffteam">
+        <div class="title">
+            <lord-icon
+                src="media/icon/staff.json"
+                trigger="loop"
+                style="width: 100px;height: 100px;">
+            </lord-icon>
+            <h2 class="title-text">The Fallen <span>Staff Team</span></h2>
+            <p>Meet the Staff Team behind The Fallen DayZ</p>
+        </div>
+        <div class="content">
+            <div class="box box-1" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/newks.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>Newks</h3>
+                    <p>Server Owner / Founder</p>
+                    <p>Head of Development</p>
+                </div>
+                <a href="#" class="know">PSN: OGNewks</a>
+            </div>
+            <div class="box box-2" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/ogmama.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>OGMamaNewks</h3>
+                    <p>Server Admin / Founder</p>
+                </div>
+                <a href="#" class="know">PSN: BMN0803</a>
+            </div>
+            
+            <div class="content">
+            <div class="box box-2" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/lala.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>Lala420ya</h3>
+                    <p>Server Admin / Founder</p>
+                </div>
+                <a href="#" class="know">PSN: WsS</a>
+            </div>
+            <div class="box box-2" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/lovely.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>Lovelybones</h3>
+                    <p>Server Admin</p>
+                </div>
+                <a href="#" class="know">PSN: Lovelybones</a>
+            </div>
+            
+                <div class="content">
+            <div class="box box-3" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/fryken.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>Fryken</h3>
+                    <p>Server Moderator</p>
+                </div>
+                <a href="#" class="know">PSN: >>></a>
+            </div>
+            <div class="box box-3" data-aos="zoom-out-down">
+                <div class="imgBx">
+                    <img src="media/merchandise/angle.png" alt="">
+                </div>
+                <div class="text">
+                    <h3>Angel_Lord777</h3>
+                    <p>Server Moderator</p>
+                </div>
+                <a href="#" class="know">PSN: ...</a>
+            </div>
+    </section>
+
+    <!-- Spin n Win -->
+    <section id="spinnwin" class="spin-section">
+        <div class="title">
+            <lord-icon
+                src="media/icon/globe.json"
+                trigger="loop"
+                style="width: 50px;height: 50px;">
+            </lord-icon>
+            <h2 class="title-text"><span>S</span>pin n Win</h2>
+            <p>Test your luck and win exclusive prizes!</p>
+        </div>
+        
+        <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="wheel" id="wheel"></div>
+        </div>
+        
+        <button class="spin-btn" id="spinBtn" onclick="spinWheel()">SPIN NOW</button>
+        
+        <p class="login-to-spin" id="loginToSpin" style="display: none;">Please <a href="/auth/discord" style="color: #5865F2;">login with Discord</a> to spin!</p>
+        
+        <div class="winner-display">
+            <h3>🏆 Recent Winners</h3>
+            <ul class="recent-winners" id="recentWinners">
+                <li class="no-winners">No winners yet - be the first!</li>
+            </ul>
+        </div>
+    </section>
+    <!-- ----- -->
+
+
+        <p class="copyright">&copy; 2026 | The Fallen DayZ | By:<a href=""> Newks</a> | & The Fallen DayZ Community</p>
+    <!-- ----- -->
+
+
+    <!-- script -->
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 2000,
+        });
+    </script>
+    <script type="text/javascript">
+        window.addEventListener('scroll',function(){
+            const header = document.querySelector('nav');
+            header.classList.toggle("sticky",window.scrollY > 0);
+        })
+        function toggleMenu(){
+            const menuToggle = document.querySelector('.menuToggle');
+            const navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+    </script>
+    <script>
+        // Check user login status on page load
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/user');
+                const data = await response.json();
+                
+                if (data.loggedIn) {
+                    const user = data.user;
+                    const avatarUrl = user.avatar 
+                        ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` 
+                        : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator) % 5}.png`;
+                    
+                    document.getElementById('auth-link').style.display = 'none';
+                    document.getElementById('user-display').style.display = 'block';
+                    document.getElementById('user-avatar').src = avatarUrl;
+                    document.getElementById('username').textContent = user.username;
+                    
+                    // Fetch roles
+                    fetchRoles();
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+        
+        async function fetchRoles() {
+            try {
+                const response = await fetch('/api/user/roles');
+                const data = await response.json();
+                
+                if (data.roles && data.roles.length > 0) {
+                    // You would need to map role IDs to names via your bot
+                    // For now, showing role IDs
+                    document.getElementById('user-roles').innerHTML = 
+                        `<p>Roles: ${data.roles.length} role(s)</p>`;
+                } else {
+                    document.getElementById('user-roles').innerHTML = 
+                        `<p>No roles found in server</p>`;
+                }
+            } catch (error) {
+                console.error('Failed to fetch roles:', error);
+            }
+        }
+        
+        checkAuth();
+        loadRecentWinners();
+    </script>
+    <script>
+        // Wheel spin logic
+        const prizes = ['$5 Credit', 'Free Day', '$10 Credit', 'VIP Day', '$2 Credit', 'Admin', '$20 Credit', 'Mystery Box', '$1 Credit', 'Legend', '$50 Credit', 'Nothing'];
+        let currentUser = null;
+        let isSpinning = false;
+        
+        // Check if user is logged in for spin
+        async function checkSpinAccess() {
+            try {
+                const response = await fetch('/api/user');
+                const data = await response.json();
+                currentUser = data.loggedIn ? data.user : null;
+                
+                const spinBtn = document.getElementById('spinBtn');
+                const loginMsg = document.getElementById('loginToSpin');
+                
+                if (!currentUser) {
+                    spinBtn.style.display = 'none';
+                    loginMsg.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error checking spin access:', error);
+            }
+        }
+        
+        function spinWheel() {
+            if (isSpinning || !currentUser) return;
+            
+            isSpinning = true;
+            const wheel = document.getElementById('wheel');
+            const spinBtn = document.getElementById('spinBtn');
+            
+            spinBtn.disabled = true;
+            spinBtn.textContent = 'Spinning...';
+            
+            // Random rotation (at least 5 full spins)
+            const randomDeg = 1800 + Math.floor(Math.random() * 360);
+            wheel.style.transform = `rotate(${randomDeg}deg)`;
+            
+            // Calculate prize
+            const actualDeg = randomDeg % 360;
+            const prizeIndex = Math.floor((360 - actualDeg) / 30) % 12;
+            const prize = prizes[prizeIndex];
+            
+            setTimeout(() => {
+                isSpinning = false;
+                spinBtn.disabled = false;
+                spinBtn.textContent = 'SPIN NOW';
+                
+                if (prize !== 'Nothing') {
+                    alert(`🎉 Congratulations! You won: ${prize}!`);
+                    saveWinner(currentUser, prize);
+                } else {
+                    alert('😢 Better luck next time!');
+                }
+            }, 4000);
+        }
+        
+        function saveWinner(user, prize) {
+            const winners = JSON.parse(localStorage.getItem('spinWinners') || '[]');
+            winners.unshift({
+                username: user.username,
+                avatar: user.avatar,
+                discriminator: user.discriminator,
+                id: user.id,
+                prize: prize,
+                time: new Date().toISOString()
+            });
+            // Keep only last 5 winners
+            if (winners.length > 5) winners.pop();
+            localStorage.setItem('spinWinners', JSON.stringify(winners));
+            loadRecentWinners();
+        }
+        
+        function loadRecentWinners() {
+            const winners = JSON.parse(localStorage.getItem('spinWinners') || '[]');
+            const list = document.getElementById('recentWinners');
+            
+            if (winners.length === 0) {
+                list.innerHTML = '<li class="no-winners">No winners yet - be the first!</li>';
+                return;
+            }
+            
+            list.innerHTML = winners.map(w => {
+                const avatarUrl = w.avatar 
+                    ? `https://cdn.discordapp.com/avatars/${w.id}/${w.avatar}.png`
+                    : `https://cdn.discordapp.com/embed/avatars/${parseInt(w.discriminator) % 5}.png`;
+                return `
+                    <li>
+                        <img src="${avatarUrl}" alt="${w.username}">
+                        <span class="winner-name">${w.username}</span>
+                        <span class="winner-prize">${w.prize}</span>
+                    </li>
+                `;
+            }).join('');
+        }
+        
+        checkSpinAccess();
+    </script>
+</body>
+</html>
